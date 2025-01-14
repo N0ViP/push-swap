@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sb.c                                               :+:      :+:    :+:   */
+/*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 18:23:19 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/14 18:49:57 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/01/14 18:29:33 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/01/14 18:49:12 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sb(t_list listb)
+void pa(t_list lista, t_list listb)
 {
-	int swap;
-
-	if (!listb || !listb->next)
+	t_list tmp;
+	if (!listb)
 		return ;
-	swap = listb->content;
-	listb->content = listb->next->content;
-	listb->next->content = swap;
+	tmp = lista;
+	lista = listb;
+	listb = listb->next;
+	lista->next = tmp;
 }
