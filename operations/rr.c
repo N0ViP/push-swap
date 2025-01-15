@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ss.c                                               :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 18:24:08 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/15 15:53:51 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/01/15 15:54:27 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/01/15 15:55:52 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap"
+#include "push_swap.h"
 
-void	ss(t_list **lista, t_list **listb)
+void	rr(t_list **lista, t_list **listb)
 {
-	sa(lista);
-	sb(listb);
+	ra(lista);
+	rb(listb);
 }
