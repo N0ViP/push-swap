@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/14 18:28:25 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/01/15 22:26:17 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/01/15 22:52:40 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap"
 
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct	s_list
+int	ft_atoi(char *s)
 {
-	int				content;
-	struct s_list	*next;
-}	t_list;
+	int	res;
+	int	sign;
 
-#endif
+	while (*s && ((*s >= 9 && *s <= 13) || *s == 32))
+		*s++;
+	sign = -1 * (*s == 45) + (*s != 45);
+	s += (*s == 45 || *s == 43);
+	if (!*s)
+		return (0);
+	res = 0;
+	while (*s >= 48 && *s <= 57)
+	{
+		res = ((res << 3) + (res << 1)) + (*s & 0b00001111);
+		s++;
+	}
+	return (res * sign);
+}
