@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 22:26:17 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/15 22:52:40 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/01/17 17:59:17 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/01/17 17:59:37 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *s)
+int	ft_count_word(char *str)
 {
-	int	res;
-	int	sign;
+	int	cnt;
 
-	while (*s && ((*s >= 9 && *s <= 13) || *s == 32))
-		s++;
-	sign = -1 * (*s == 45) + (*s != 45);
-	s += (*s == 45 || *s == 43);
-	if (!*s)
-		return (0);
-	res = 0;
-	while (*s >= 48 && *s <= 57)
+	cnt = 0;
+	while (*s)
 	{
-		res = ((res << 3) + (res << 1)) + (*s & 0b00001111);
-		s++;
+		while (*s && (*s == ' ' || *s >= 9 && *s <= 13))
+			s++;
+		if (*s)
+			cnt++;
+		while (*s && !(*s == ' ' || *s >= 9 && *s <= 13))
+			s++;
 	}
-	return (res * sign);
+	return (cnt);
 }
