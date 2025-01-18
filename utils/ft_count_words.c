@@ -6,13 +6,13 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:59:17 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/17 17:59:37 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/01/18 01:17:43 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_count_word(char *str)
+int	ft_count_words(char *s)
 {
 	int	cnt;
 

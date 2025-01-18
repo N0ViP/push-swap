@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcopy.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 17:59:48 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/17 22:12:24 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/01/17 23:56:04 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/01/18 03:46:41 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "t.h"
 
-void	*ft_memcopy(void *dest, void *src, size_t l)
+void	*ft_memcpy(void *dest, void *src, size_t l)
 {
 	register void  *d = dest;
 	register void  *s = src;
@@ -39,3 +39,4 @@ void	*ft_memcopy(void *dest, void *src, size_t l)
 	}
 	return (dest);
 }
+
