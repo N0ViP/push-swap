@@ -6,28 +6,36 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 22:26:17 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/15 22:52:40 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/01/19 05:06:22 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *s)
+int	ft_atoi(const char *str)
 {
-	int	res;
-	int	sign;
+	register long long	res;
+	int					sign;
 
-	while (*s && ((*s >= 9 && *s <= 13) || *s == 32))
+	sign = 0;
+	while (*s && ((*s >= '\t' && *s <= '\r') || *s == ' '))
 		s++;
-	sign = -1 * (*s == 45) + (*s != 45);
-	s += (*s == 45 || *s == 43);
-	if (!*s)
+	sign = (*s == '-');
+	s += (*s == '-' || *s == '+');
+	if (!*s || (*s == '0' && !*(s + 1)))
 		return (0);
 	res = 0;
-	while (*s >= 48 && *s <= 57)
+	while (*s >= '0' && *s <= '9')
 	{
-		res = ((res << 3) + (res << 1)) + (*s & 0b00001111);
-		s++;
+		res = (res << 3) + (res << 1) + (*s++ & 0X0F);
+		if (res < 0)
+		{
+			if (sign != 1)
+				return (-1);
+			return (0);
+		}
 	}
-	return (res * sign);
+	if (sign == 1)
+		res = -res;
+	return ((int) res);
 }
