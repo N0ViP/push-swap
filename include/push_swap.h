@@ -15,10 +15,14 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "ft_printf.h"
+
+# define LIST_MAX 500
 
 typedef struct	s_list
 {
 	int				content;
+	int				idx;
 	struct s_list	*next;
 }	t_list;
 
