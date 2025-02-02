@@ -19,7 +19,7 @@
 //# include "ft_printf.h"
 
 # define LIST_MAX 500
-
+# define MAX_INT 2147483647
 typedef struct	s_list
 {
 	int				val;
