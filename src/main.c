@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/02/03 15:05:40 by yjaafar          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	ft_ascii_to_int(char** av)
+int	ft_ascii_to_int(char **av)
 {
 	long long	res;
 	int			sign;
@@ -8,80 +20,82 @@ int	ft_ascii_to_int(char** av)
 	res = 0;
 	sign = -1 * (**av == 45) + (**av != 45);
 	(*av) += (**av == 45 || **av == 43);
-	if (ft_isspace(**av) || **av == 45 || **av == 43)
-			return ((*av = NULL), 0);
-	while (**av >= 48 && **av <= 57)
+	if (!ft_isdigit(**av))
+		return ((*av = NULL), 0);
+	while (ft_isdigit(**av))
 	{
 		res = (res << 3) + (res << 1) + (**av & 0X0F);
 		(*av)++;
 		if (res > MAX_INT || res < 0)
-				return ((*av = NULL), 0);
+			return ((*av = NULL), 0);
 	}
 	if (**av && !ft_isspace(**av))
-			return ((*av = NULL), 0);
+		return ((*av = NULL), 0);
 	return (res * sign);
 }
 
-int	ft_one_arg(t_list **A, t_list *a, char *av)
+int	ft_one_arg(t_list **list_a, t_list *a, char *av)
 {
-	static int	aSize;
+	static int	asize;
 	int			tmp;
 
-	while (ft_isspace(*av))
-		av++;
 	while (*av)
 	{
-		tmp = ft_ascii_to_int(&av);
-		if (!av)
-				return (-1);
-		a[aSize].val = tmp;
-		a[aSize].idx = aSize;
-		ft_lstadd_back(A, &a[aSize++]);
 		while (ft_isspace(*av))
 			av++;
+		if (!*av)
+			return (asize);
+		tmp = ft_ascii_to_int(&av);
+		if (!av)
+			return (-1);
+		a[asize].val = tmp;
+		a[asize].idx = asize;
+		ft_lstadd_back(list_a, &a[asize++]);
 	}
-	return (aSize);
+	return (asize);
 }
 
-int	ft_multi_args(t_list **A, t_list *a, char **av)
+int	ft_multi_args(t_list **list_a, t_list *a, char **av)
 {
 	int	i;
-	int	aSize;
+	int	asize;
 
 	i = 0;
+	asize = 0;
 	while (av[i])
 	{
-		aSize = ft_one_arg(A, a, av[i]);
-		if (aSize == -1)
+		asize = ft_one_arg(list_a, a, av[i]);
+		if (asize == -1)
 			return (-1);
 		i++;
 	}
-	return (aSize);
+	return (asize);
 }
 
-int	ft_fill_list_a(t_list **A, t_list *a, char **av, int ac)
+int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
 {
-	int	aSize;
+	int	asize;
 
 	if (ac == 1)
-		aSize = ft_one_arg(A, a, av[0]);
+		asize = ft_one_arg(list_a, a, av[0]);
 	else
-		aSize = ft_multi_args(A, a, av);
-	return (aSize);
+		asize = ft_multi_args(list_a, a, av);
+	return (asize);
 }
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
-	int				aSize;
+	int				asize;
 	static t_list	tmp[LIST_MAX];
-	t_list			*A;
+	t_list			*list_a;
 
-	A = NULL;
-	if (ac == 1 || (ac = 2 && !av[1][0]))
-		return (1);
-	aSize = ft_fill_list_a(&A, tmp, av + 1, ac - 1);
-	if (aSize == -1)
+	list_a = NULL;
+	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
+	if (asize == -1)
 		return (write(2, "Error\n", 6));
-	ft_move_to_b(A);
-
+	while (list_a)
+	{
+		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
+		list_a = list_a->next;
+	}
 }
