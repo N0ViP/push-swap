@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/02 06:33:56 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/03 20:02:05 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 # define LIST_MAX 500
 # define MAX_INT 2147483647
+# define MIN_INT -2147483648
+
 typedef struct	s_list
 {
 	int				val;

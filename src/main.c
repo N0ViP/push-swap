@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/03 15:05:40 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/03 20:01:20 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_ascii_to_int(char **av)
 	{
 		res = (res << 3) + (res << 1) + (**av & 0X0F);
 		(*av)++;
-		if (res > MAX_INT || res < 0)
+		if (res > MAX_INT || (sign * res < MIN_INT))
 			return ((*av = NULL), 0);
 	}
 	if (**av && !ft_isspace(**av))
@@ -39,6 +39,8 @@ int	ft_one_arg(t_list **list_a, t_list *a, char *av)
 	static int	asize;
 	int			tmp;
 
+	if (!*av)
+		return (-1);
 	while (*av)
 	{
 		while (ft_isspace(*av))
