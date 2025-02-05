@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   ft_sort_three_elements.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 18:51:29 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/15 15:07:20 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/02/05 18:01:52 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/02/05 18:25:18 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap"
+#include "push_swap.h"
 
-void ra(t_list **lista)
+void	ft_sort_three_elements(t_list **lista)
 {
-	t_list	*tmp;
-
-	if (!list || !*lista || !*lista-next)
-		return ;
-	tmp = *lista;
-	*lista = *lista->next;
-	tmp->next = NULL;
-	while (*lista->next)
-	{
-		*lista = *lista->next;
-	}
-	*lista->next = tmp;
+	
 }

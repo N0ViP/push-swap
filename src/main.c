@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/03 20:01:20 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/05 18:50:13 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,27 @@ int	main(int ac, char *av[])
 	int				asize;
 	static t_list	tmp[LIST_MAX];
 	t_list			*list_a;
+	t_list			*list_b;
 
 	list_a = NULL;
 	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6));
+	printf("\n\n\n");
+	ft_move_to_b(&list_a, &list_b, asize);
 	while (list_a)
 	{
 		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
 		list_a = list_a->next;
 	}
+
+	printf("\n\n\n");
+
+	while (list_b)
+	{
+		printf("list_b[%d] = %d\n", list_b->idx, list_b->val);
+		list_b = list_b->next;
+	}
+
+
 }
