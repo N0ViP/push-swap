@@ -12,18 +12,20 @@
 
 #include "push_swap.h"
 
-void ra(t_list **lista)
+void	ra(t_list **list_a)
 {
 	t_list	*tmp;
+	t_list	*ptr;
 
-	if (!lista || !*lista || !(*lista)->next)
+	if (!list_a || !*list_a || !(*list_a)->next)
 		return ;
-	tmp = *lista;
-	*lista = (*lista)->next;
+	tmp = *list_a;
+	*list_a = (*list_a)->next;
+	ptr = *list_a;
 	tmp->next = NULL;
-	while ((*lista)->next)
+	while (ptr->next)
 	{
-		*lista = (*lista)->next;
+		ptr = ptr->next;
 	}
-	(*lista)->next = tmp;
+	ptr->next = tmp;
 }

@@ -93,6 +93,7 @@ int	main(int ac, char *av[])
 	t_list			*list_b;
 
 	list_a = NULL;
+	list_b = NULL;
 	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6));
@@ -100,10 +101,10 @@ int	main(int ac, char *av[])
 	ft_move_to_b(&list_a, &list_b, asize);
 	while (list_a)
 	{
+
 		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
 		list_a = list_a->next;
 	}
-
 	printf("\n\n\n");
 
 	while (list_b)

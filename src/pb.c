@@ -12,11 +12,14 @@
 
 #include "push_swap.h"
 
-void	pb(t_list **listb, t_list **lista)
+void	pb(t_list **list_b, t_list **list_a)
 {
 	t_list *tmp;
-	tmp = *listb;
-	*listb = *lista;
-	*lista = (*lista)->next;
-	(*listb)->next = tmp;
+
+	if (!list_a || !*list_a)
+		return ;
+	tmp = *list_b;
+	*list_b = *list_a;
+	*list_a = (*list_a)->next;
+	(*list_b)->next = tmp;
 }
