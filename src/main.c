@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/05 18:50:13 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/06 10:51:00 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,21 @@ int	ft_ascii_to_int(char **av)
 	return (res * sign);
 }
 
-int	ft_one_arg(t_list **list_a, t_list *a, char *av)
+int	ft_check_exist(t_list *a, int tmp, int asize)
+{
+	int	i;
+
+	i = 0;
+	while (i < asize)
+	{
+		if (a[i].val == tmp)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_one_arg(t_list *a, char *av)
 {
 	static int	asize;
 	int			tmp;
@@ -48,16 +62,15 @@ int	ft_one_arg(t_list **list_a, t_list *a, char *av)
 		if (!*av)
 			return (asize);
 		tmp = ft_ascii_to_int(&av);
-		if (!av)
+		if (!av || ft_check_exist(a, tmp, asize))
 			return (-1);
 		a[asize].val = tmp;
-		a[asize].idx = asize;
-		ft_lstadd_back(list_a, &a[asize++]);
+		a[asize].idx = asize++;
 	}
 	return (asize);
 }
 
-int	ft_multi_args(t_list **list_a, t_list *a, char **av)
+int	ft_multi_args(t_list *a, char **av)
 {
 	int	i;
 	int	asize;
@@ -66,7 +79,7 @@ int	ft_multi_args(t_list **list_a, t_list *a, char **av)
 	asize = 0;
 	while (av[i])
 	{
-		asize = ft_one_arg(list_a, a, av[i]);
+		asize = ft_one_arg(a, av[i]);
 		if (asize == -1)
 			return (-1);
 		i++;
@@ -77,11 +90,18 @@ int	ft_multi_args(t_list **list_a, t_list *a, char **av)
 int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
 {
 	int	asize;
+	int	i;
 
 	if (ac == 1)
-		asize = ft_one_arg(list_a, a, av[0]);
+		asize = ft_one_arg(a, av[0]);
 	else
-		asize = ft_multi_args(list_a, a, av);
+		asize = ft_multi_args(a, av);
+	i = asize - 1;
+	while (i >= 0)
+	{
+		ft_lstadd_front(list_a, &a[i]);
+		i--;
+	}
 	return (asize);
 }
 
@@ -112,6 +132,5 @@ int	main(int ac, char *av[])
 		printf("list_b[%d] = %d\n", list_b->idx, list_b->val);
 		list_b = list_b->next;
 	}
-
 
 }
