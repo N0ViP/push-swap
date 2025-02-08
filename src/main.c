@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/06 10:51:00 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/08 14:27:08 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	main(int ac, char *av[])
 	static t_list	tmp[LIST_MAX];
 	t_list			*list_a;
 	t_list			*list_b;
+	t_list *t;
 
 	list_a = NULL;
 	list_b = NULL;
@@ -119,18 +120,26 @@ int	main(int ac, char *av[])
 		return (write(2, "Error\n", 6));
 	printf("\n\n\n");
 	ft_move_to_b(&list_a, &list_b, asize);
-	while (list_a)
+	t = list_a;
+	while (t)
 	{
 
-		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
-		list_a = list_a->next;
+		printf("list_a[%d] = %d\n", t->idx, t->val);
+		t = t->next;
 	}
 	printf("\n\n\n");
 
-	while (list_b)
+	t = list_b;
+	while (t)
 	{
-		printf("list_b[%d] = %d\n", list_b->idx, list_b->val);
-		list_b = list_b->next;
-	}
-
+		printf("list_b[%d] = %d\n", t->idx, t->val);
+		t = t->next;
+	}/*
+	ft_move_to_a(&list_a, &list_b, asize);
+	printf("\n\n\n");
+	while (list_a)
+	{
+		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
+		list_a = list_a->next;
+	}*/
 }
