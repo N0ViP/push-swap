@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/08 14:27:08 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/08 17:47:54 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,25 +118,25 @@ int	main(int ac, char *av[])
 	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6));
-	printf("\n\n\n");
+	//printf("\n\n\n");
 	ft_move_to_b(&list_a, &list_b, asize);
-	t = list_a;
+	/*t = list_a;
 	while (t)
 	{
 
 		printf("list_a[%d] = %d\n", t->idx, t->val);
 		t = t->next;
-	}
-	printf("\n\n\n");
+	}*/
+	/*printf("\n\n\n");
 
 	t = list_b;
 	while (t)
 	{
 		printf("list_b[%d] = %d\n", t->idx, t->val);
 		t = t->next;
-	}/*
+	}*/
 	ft_move_to_a(&list_a, &list_b, asize);
-	printf("\n\n\n");
+	/*printf("\n\n\n");
 	while (list_a)
 	{
 		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);

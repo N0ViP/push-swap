@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/08 14:04:33 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/08 17:44:13 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_list
 void	ra(t_list **lista);
 void	pb(t_list **listb, t_list **lista);
 void	pa(t_list **list_a, t_list **list_b);
-
+void	rb(t_list **listb);
 int		ft_isdigit(int c);
 int		ft_isspace(int c);
 void	ft_lstadd_front(t_list **lst, t_list *new);

@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:44:37 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/06 08:58:13 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/08 15:19:46 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize)
 {
 	while (asize >= 3)
 	{
-		while (ft_check_val(*list_a, asize) < (asize / 3))
+		while (ft_check_val(*list_a, asize) <= (asize / 3))
 		{
 			printf("ra\n");
 			ra(list_a);
