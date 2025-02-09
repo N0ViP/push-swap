@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 13:16:32 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/09 17:55:51 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_ascii_to_int(char **av)
 	{
 		res = (res << 3) + (res << 1) + (**av & 0X0F);
 		(*av)++;
-		if (res > MAX_INT || (sign * res < MIN_INT))
+		if (res > MAX_INT || (sign * res < INT_MIN))
 			return ((*av = NULL), 0);
 	}
 	if (**av && !ft_isspace(**av))
@@ -109,7 +109,7 @@ int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
 int	main(int ac, char *av[])
 {
 	int				asize;
-	static t_list	tmp[LIST_MAX];
+	static t_list	tmp[STACK_MAX];
 	t_list			*list_a;
 	t_list			*list_b;
 	t_list *t;

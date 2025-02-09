@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 13:19:34 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/09 17:55:19 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdio.h>
-//# include "ft_printf.h"
+# include <stdio.h>
+# include <limits.h>
 
-# define LIST_MAX 2000000
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
+
+# define STACK_MAX 2097152
 
 typedef struct	s_list
 {

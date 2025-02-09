@@ -6,18 +6,18 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 09:02:50 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 13:23:39 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/09 17:53:44 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <limits.h>
 
 int	ft_get_target(int n, t_list *list_a)
 {
 	int	target;
 
 	target = INT_MAX;
+
 	while (list_a)
 	{
 		if (list_a->val < target && n < list_a->val)
@@ -27,6 +27,17 @@ int	ft_get_target(int n, t_list *list_a)
 		list_a = list_a->next;
 	}
 	return (target);
+}
+
+void ft_move_element(t_list **list_a, t_list **list_b, int target)
+{
+	while (*list_a && (*list_a)->val != target)
+	{
+		ra(list_a);
+		printf("ra\n");
+	}
+	printf("pa\n");
+	pa(list_a, list_b);
 }
 
 void	ft_move_to_a(t_list **list_a, t_list **list_b, int asize)
