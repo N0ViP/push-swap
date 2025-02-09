@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 int	ft_get_target(int n, t_list *list_a)
 {
 	
@@ -73,14 +73,14 @@ void	ft_best_move(t_list **list_a, t_list **list_b, int asize)
 	a = ft_move_target((*list_b)->val, list_a);
 	b = ft_move_dep((*list_a)->val, list_b);
 }
-
+*/
 void	ft_move_to_a(t_list **list_a, t_list **list_b, int asize)
 {
-	int	target;
+//	int	target;
 
 	while (*list_b)
 	{
-		ft_best_move(list_a, list_b, asize);
-		ft_move_element(list_a, list_b, target);
+		ft_best_move(list_a, list_b);
+		//ft_move_element(list_a, list_b, target);
 	}
 }

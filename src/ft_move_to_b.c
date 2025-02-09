@@ -29,21 +29,12 @@ int	ft_check_val(t_list *tmp, int asize)
 	return (n <= (asize / 3));
 }
 
-void	ft_fix_list_a(t_list **list_a, int asize)
+void	ft_rotate(t_list **list_a, int asize, int n)
 {
-	int			if_ra;
-	operation	op;
-	t_list		*tmp;
 	char		*str;
+	operation	op;
 
-	if_ra = 0;
-	tmp = *list_a;
-	while (tmp && ft_check_val(tmp, asize))
-	{
-		tmp = tmp->next;
-		if_ra++;
-	}
-	if (if_ra <= (asize / 2))
+	if (n <= (asize / 2))
 	{
 		str = "ra\n";
 		op = ra;
@@ -58,6 +49,21 @@ void	ft_fix_list_a(t_list **list_a, int asize)
 		op(list_a);
 		printf("%s", str);
 	}
+}
+
+void	ft_fix_list_a(t_list **list_a, int asize)
+{
+	int		n;
+	t_list	*tmp;
+
+	n = 0;
+	tmp = *list_a;
+	while (tmp && ft_check_val(tmp, asize))
+	{
+		tmp = tmp->next;
+		n++;
+	}
+	ft_rotate(list_a, asize, n);
 }
 
 void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize)

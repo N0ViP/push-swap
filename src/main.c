@@ -26,7 +26,7 @@ int	ft_ascii_to_int(char **av)
 	{
 		res = (res << 3) + (res << 1) + (**av & 0X0F);
 		(*av)++;
-		if (res > MAX_INT || (sign * res < INT_MIN))
+		if (res > INT_MAX || (sign * res < INT_MIN))
 			return ((*av = NULL), 0);
 	}
 	if (**av && !ft_isspace(**av))
