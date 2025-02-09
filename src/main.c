@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/08 17:47:54 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/09 12:01:14 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int	ft_one_arg(t_list *a, char *av)
 		if (!av || ft_check_exist(a, tmp, asize))
 			return (-1);
 		a[asize].val = tmp;
-		a[asize].idx = asize++;
+		a[asize].idx = asize;
+		asize++;
 	}
 	return (asize);
 }
@@ -105,6 +106,31 @@ int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
 	return (asize);
 }
 
+int	ft_get_min(t_list *tmp, int asize)
+{
+	int	i;
+	int min;
+	int	id;
+
+	i = 0;
+	id = 0;
+	min = tmp[i].val;
+	tmp[i].idx = i;
+	i += 1;
+	while (i < asize)
+	{
+		if (tmp[i].val < min)
+		{
+			id = i;
+			min = tmp[i].val;
+		}
+		tmp[i].idx = i;
+		i += 1;
+	}
+	printf("iii%d\n", tmp[1].idx);
+	return (min);
+}
+
 int	main(int ac, char *av[])
 {
 	int				asize;
@@ -118,16 +144,16 @@ int	main(int ac, char *av[])
 	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6));
-	//printf("\n\n\n");
+//	printf("\n\n\n");
 	ft_move_to_b(&list_a, &list_b, asize);
-	/*t = list_a;
+/*	t = list_a;
 	while (t)
 	{
 
 		printf("list_a[%d] = %d\n", t->idx, t->val);
 		t = t->next;
-	}*/
-	/*printf("\n\n\n");
+	}
+	printf("\n\n\n");
 
 	t = list_b;
 	while (t)
@@ -136,10 +162,12 @@ int	main(int ac, char *av[])
 		t = t->next;
 	}*/
 	ft_move_to_a(&list_a, &list_b, asize);
-	/*printf("\n\n\n");
+	ft_move_to_top(&list_a, ft_get_min(tmp, asize), asize);
+	printf("\n\n\n");
 	while (list_a)
 	{
 		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
 		list_a = list_a->next;
-	}*/
+	}
+
 }
