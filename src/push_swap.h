@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 11:04:40 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/09 13:19:34 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	s_list
 	struct s_list*	next;
 }	t_list;
 
+typedef	void(*operation)(t_list **list);
 
 /* Operations */
 
@@ -48,6 +49,6 @@ int		ft_isspace(int c);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize);
 void    ft_move_to_a(t_list **list_a, t_list **list_b, int asize);
-void    ft_move_to_top(t_list **list_a, int id, int asize);
+void    ft_move_to_top(t_list **list_a, int asize);
 
 #endif

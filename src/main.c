@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 12:01:14 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/09 13:16:32 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,31 +106,6 @@ int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
 	return (asize);
 }
 
-int	ft_get_min(t_list *tmp, int asize)
-{
-	int	i;
-	int min;
-	int	id;
-
-	i = 0;
-	id = 0;
-	min = tmp[i].val;
-	tmp[i].idx = i;
-	i += 1;
-	while (i < asize)
-	{
-		if (tmp[i].val < min)
-		{
-			id = i;
-			min = tmp[i].val;
-		}
-		tmp[i].idx = i;
-		i += 1;
-	}
-	printf("iii%d\n", tmp[1].idx);
-	return (min);
-}
-
 int	main(int ac, char *av[])
 {
 	int				asize;
@@ -162,12 +137,12 @@ int	main(int ac, char *av[])
 		t = t->next;
 	}*/
 	ft_move_to_a(&list_a, &list_b, asize);
-	ft_move_to_top(&list_a, ft_get_min(tmp, asize), asize);
-	printf("\n\n\n");
+	ft_move_to_top(&list_a, asize);
+	/*printf("\n\n\n");
 	while (list_a)
 	{
 		printf("list_a[%d] = %d\n", list_a->idx, list_a->val);
 		list_a = list_a->next;
-	}
+	}*/
 
 }
