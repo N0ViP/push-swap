@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-void	rb(t_list **listb)
+void	rb(t_list **list_b)
 {
 	t_list  *tmp;
 	t_list	*ptr;
 
-	if (!listb || !*listb|| !(*listb)->next)
+	if (!list_b || !*list_b|| !(*list_b)->next)
 		return ;
-	tmp = *listb;
-	*listb = (*listb)->next;
+	tmp = *list_b;
+	*list_b = (*list_b)->next;
+	ptr = *list_b;
 	tmp->next = NULL;
-	ptr = *listb;
 	while (ptr->next)
 	{
 		ptr = ptr->next;

@@ -81,6 +81,8 @@ void	ft_move_to_a(t_list **list_a, t_list **list_b, int asize)
 	while (*list_b)
 	{
 		ft_best_move(list_a, list_b);
+		printf("pa\n");
+		pa(list_a, list_b);
 		//ft_move_element(list_a, list_b, target);
 	}
 }
