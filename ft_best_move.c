@@ -48,6 +48,11 @@ int	move_b_to_top(int val, t_list *list_b, t_list *list_a, t_stock *tmp)
 
 void	ft_move_target_and_num(t_list **list_a, t_list **list_b, t_stock *res)
 {
+	while ((*list_a && (*list_a)->val != res->target) && (*list_b && (*list_b)->val != res->num))
+	{
+		printf("rr\n");
+		rr(list_a, list_b);
+	}
 	while (*list_a && (*list_a)->val != res->target)
 	{
 		printf("ra\n");

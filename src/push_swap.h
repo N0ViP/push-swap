@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 17:55:19 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/10 18:16:39 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ typedef struct	s_list
 	struct s_list*	next;
 }	t_list;
 
+typedef	struct	s_stock
+{
+    int	target;
+    int	num;
+	int	tmp_target;
+	int	tmp_num;
+}	t_stock;
+
 typedef	void(*operation)(t_list **list);
 
 /* Operations */
@@ -38,7 +46,7 @@ void	pa(t_list **list_a, t_list **list_b);
 void	rb(t_list **listb);
 void    rrb(t_list **listb);
 void    rra(t_list **lista);
-
+void	rr(t_list **lista, t_list **listb);
 
 
 
