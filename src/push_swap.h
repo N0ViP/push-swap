@@ -49,11 +49,11 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize);
 void    ft_move_to_a(t_list **list_a, t_list **list_b, int asize);
 void    ft_move_to_top(t_list **list_a, int asize);
-int	if_rotat_a(int val, int *a_val, t_list *list_a);
-int	if_rotat_b(int val, int *b_val, t_list *list_b);
+//int	if_rotat_a(int val, int *a_val, t_list *list_a);
+//int	if_rotat_b(int val, int *b_val, t_list *list_b);
 void	ft_best_move(t_list **list_a, t_list **list_b);
-void	ft_rotat_a(t_list **list_a, int a_val);
-void	ft_rotat_b(t_list **list_b, int b_val);
+//void	ft_rotat_a(t_list **list_a, int a_val);
+//void	ft_rotat_b(t_list **list_b, int b_val);
 
 
 
