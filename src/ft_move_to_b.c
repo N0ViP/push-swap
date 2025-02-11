@@ -5,83 +5,106 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 17:44:37 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 17:37:35 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/02/11 06:13:55 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/02/11 16:03:52 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_val(t_list *tmp, int val, int asize)
+int	check_if_valid(t_list *list_a, int val, int asize)
 {
-	int		n;
+	int	n;
 
 	n = 0;
-	while (tmp)
+	while (list_a)
 	{
-		if (val < tmp->val)
+		if (val < list_a->val)
 			n++;
-		if (n >= (asize / 3))
-				return (1);
-		tmp = tmp->next;
+		if ((asize / 3) < n)
+			return (1);
+		list_a = list_a->next;
 	}
 	return (0);
 }
 
-void	ft_rotate(t_list **list_a, int asize, int n)
+int	ft_get_moves(int val, t_list *list_a, int asize)
 {
-	char		*str;
-	operation	op;
+	int	i;
 
-	if (n <= (asize / 2))
+	i = 0;
+	while (list_a && list_a->val != val)
 	{
-		str = "ra\n";
+		i++;
+		list_a = list_a->next;
+	}
+	if (i <= asize / 2)
+		return (i);
+	return (asize - i);
+}
+
+void	ft_rotate_a(t_list **list_a, int val, int asize)
+{
+	t_list		*tmp;
+	int			i;
+	operation	op;
+	char		*str;
+
+	i = 0;
+	tmp = *list_a;
+	while (tmp && tmp->val != val)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (i <= asize / 2)
+	{
 		op = ra;
+		str = "ra\n";
 	}
 	else
 	{
-		str = "rra\n";
 		op = rra;
+		str = "rra\n";
 	}
-	while (*list_a && !ft_check_val(*list_a, (*list_a)->val, asize))
+	while (*list_a && (*list_a)->val != val)
 	{
-		op(list_a);
 		printf("%s", str);
+		op(list_a);
 	}
 }
 
 void	ft_fix_list_a(t_list **list_a, int asize)
 {
-	int		n;
 	t_list	*tmp;
+	int		best;
+	int		moves;
+	int		val;
 
-	n = 0;
+	best = INT_MAX;
 	tmp = *list_a;
-	while (tmp && !ft_check_val(*list_a, tmp->val, asize))
+	while (tmp)
 	{
+		moves = ft_get_moves(tmp->val, *list_a, asize);
+		if (check_if_valid(*list_a, tmp->val, asize) && moves <= best)
+		{
+			val = tmp->val;
+			best = moves;
+		}
 		tmp = tmp->next;
-		n++;
 	}
-	ft_rotate(list_a, asize, n);
+	ft_rotate_a(list_a, val, asize);
 }
 
 void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize)
 {
-	while (asize >= 3)
+	while (asize > 3)
 	{
-		if (!ft_check_val(*list_a, (*list_a)->val, asize))
-		{
+		if (!check_if_valid(*list_a, (*list_a)->val, asize))
 			ft_fix_list_a(list_a, asize);
-		}
 		printf("pb\n");
 		pb(list_b, list_a);
 		asize--;
 	}
-
-	if (asize == 2 && (*list_a)->val > (*list_a)->next->val)
-	{
-		printf("ra\n");
-		ra(list_a);
-	}
+	sort_3(list_a);
 }
-

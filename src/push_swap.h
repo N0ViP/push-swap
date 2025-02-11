@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/10 18:16:39 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:04:03 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	rb(t_list **listb);
 void    rrb(t_list **listb);
 void    rra(t_list **lista);
 void	rr(t_list **lista, t_list **listb);
+void    sa(t_list **lista);
 
-
-
+void    sort_3(t_list **a);
 void ft(t_list *list);
 int		ft_isdigit(int c);
 int		ft_isspace(int c);
