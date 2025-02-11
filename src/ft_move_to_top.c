@@ -45,13 +45,13 @@ void	ft_move_to_top(t_list **list_a, int asize)
 	id = ft_get_min(*list_a);
 	if (id < asize / 2)
 	{
-		str = "rra\n";
-		op = rra;
+		str = "ra\n";
+		op = ra;
 	}
 	else
 	{
-		str = "ra\n";
-		op = ra;
+		str = "rra\n";
+		op = rra;
 	}
 	while (*list_a && (*list_a)->idx != id)
 	{

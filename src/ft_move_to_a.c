@@ -41,6 +41,7 @@ int	if_rotat_a(int val, int *tmp_target, t_list *list_a)
 int	move_ab_to_top(int val, t_list *list_b, t_list *list_a, t_stock *stock)
 {
 	int	n;
+	int	m;
 
 	n = 0;
 	while (list_b && list_b->val != val)
@@ -49,8 +50,10 @@ int	move_ab_to_top(int val, t_list *list_b, t_list *list_a, t_stock *stock)
 		list_b = list_b->next;
 	}
 	stock->tmp_num = val;
-	n += if_rotat_a(val, &(stock->tmp_target), list_a);
-	return (n);
+	m = if_rotat_a(val, &(stock->tmp_target), list_a);
+	if (n > m)
+		return (n);
+	return (m);
 }
 
 void	ft_move_target_and_num(t_list **list_a, t_list **list_b, t_stock *stock)

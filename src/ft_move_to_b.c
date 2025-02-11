@@ -12,21 +12,20 @@
 
 #include "push_swap.h"
 
-int	ft_check_val(t_list *tmp, int asize)
+int	ft_check_val(t_list *tmp, int val, int asize)
 {
 	int		n;
-	int		target;
 
 	n = 0;
-	target = tmp->val;
-	tmp = tmp->next;
 	while (tmp)
 	{
-		if (target < tmp->val)
+		if (val < tmp->val)
 			n++;
+		if (n >= (asize / 3))
+				return (1);
 		tmp = tmp->next;
 	}
-	return (n <= (asize / 3));
+	return (0);
 }
 
 void	ft_rotate(t_list **list_a, int asize, int n)
@@ -44,7 +43,7 @@ void	ft_rotate(t_list **list_a, int asize, int n)
 		str = "rra\n";
 		op = rra;
 	}
-	while (*list_a && ft_check_val(*list_a, asize))
+	while (*list_a && !ft_check_val(*list_a, (*list_a)->val, asize))
 	{
 		op(list_a);
 		printf("%s", str);
@@ -58,7 +57,7 @@ void	ft_fix_list_a(t_list **list_a, int asize)
 
 	n = 0;
 	tmp = *list_a;
-	while (tmp && ft_check_val(tmp, asize))
+	while (tmp && !ft_check_val(*list_a, tmp->val, asize))
 	{
 		tmp = tmp->next;
 		n++;
@@ -70,8 +69,10 @@ void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize)
 {
 	while (asize >= 3)
 	{
-		if (ft_check_val(*list_a, asize))
+		if (!ft_check_val(*list_a, (*list_a)->val, asize))
+		{
 			ft_fix_list_a(list_a, asize);
+		}
 		printf("pb\n");
 		pb(list_b, list_a);
 		asize--;
