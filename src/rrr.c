@@ -12,8 +12,27 @@
 
 #include "push_swap.h"
 
-void	rrr(t_list **lista, t_list **listb)
+static void	r_r(t_list **list)
 {
-	rra(lista);
-	rrb(listb);
+	t_list	*tmp;
+	t_list	*ptr;
+
+	if (!list || !*list || !(*list)->next)
+		return ;
+	ptr = *list;
+	while (ptr->next->next)
+	{
+		ptr = ptr->next;
+	}
+	tmp = *list;
+	*list = ptr->next;
+	ptr->next = NULL;
+	(*list)->next = tmp;
+}
+
+void	rrr(t_list **list_a, t_list **list_b)
+{
+	write(1, "rrr\n", 4);
+	r_r(list_a);
+	r_r(list_b);
 }

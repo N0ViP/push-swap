@@ -48,7 +48,6 @@ void	ft_rotate_a(t_list **list_a, int val, int asize)
 	t_list		*tmp;
 	int			i;
 	operation	op;
-	char		*str;
 
 	i = 0;
 	tmp = *list_a;
@@ -58,18 +57,11 @@ void	ft_rotate_a(t_list **list_a, int val, int asize)
 		tmp = tmp->next;
 	}
 	if (i <= asize / 2)
-	{
 		op = ra;
-		str = "ra\n";
-	}
 	else
-	{
 		op = rra;
-		str = "rra\n";
-	}
 	while (*list_a && (*list_a)->val != val)
 	{
-		printf("%s", str);
 		op(list_a);
 	}
 }
@@ -102,7 +94,6 @@ void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize)
 	{
 		if (!check_if_valid(*list_a, (*list_a)->val, asize))
 			ft_fix_list_a(list_a, asize);
-		printf("pb\n");
 		pb(list_b, list_a);
 		asize--;
 	}

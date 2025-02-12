@@ -16,6 +16,7 @@ void	sa(t_list **lista)
 {
 	t_list	*tmp;
 
+	write(1, "sa\n", 3);
 	if (!lista || !*lista || !(*lista)->next)
 		return ;
 	tmp = *lista;

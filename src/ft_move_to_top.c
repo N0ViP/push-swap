@@ -39,23 +39,19 @@ static int	ft_get_min(t_list *list_a)
 void	ft_move_to_top(t_list **list_a, int asize)
 {
 	operation	op;
-	char		*str;
 	int			id;
 
 	id = ft_get_min(*list_a);
 	if (id < asize / 2)
 	{
-		str = "ra\n";
 		op = ra;
 	}
 	else
 	{
-		str = "rra\n";
 		op = rra;
 	}
 	while (*list_a && (*list_a)->idx != id)
 	{
-		printf("%s", str);
 		op(list_a);
 	}
 }

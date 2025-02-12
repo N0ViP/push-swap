@@ -17,6 +17,7 @@ void	rra(t_list **lista)
 	t_list	*tmp;
 	t_list	*ptr;
 
+	write(1, "rra\n", 4);
 	if (!lista || !*lista || !(*lista)->next)
 		return ;
 	ptr = *lista;

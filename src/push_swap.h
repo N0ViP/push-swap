@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/12 07:04:16 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/12 17:29:34 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef	struct	s_stock
     int	num;
 	int	tmp_target;
 	int	amove;
+	int	tmp_amove;
+	int	tmp_bmove;
 	int	bmove;
 }	t_stock;
 

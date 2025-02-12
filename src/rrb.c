@@ -17,6 +17,7 @@ void	rrb(t_list **listb)
 	t_list	*tmp;
 	t_list	*ptr;
 
+	write(1, "rrb\n", 4);
 	if (!listb || !*listb || !(*listb)->next)
 		return ;
 	ptr = *listb;

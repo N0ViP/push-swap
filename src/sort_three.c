@@ -23,28 +23,23 @@ void    sort_3(t_list **a)
     third = (*a)->next->next->val;
     if ((first > scnd) && (first < third))
 	{
-		printf("sa\n");
         sa(a);
 	}
     else if ((first < scnd) && (third < first))
 	{
-		printf("rra\n");
         rra(a);
 	}
     else if ((first < third) && (scnd > third))
     {
-		printf("rra\nsa\n");
         rra(a);
         sa(a);
     }
     else if ((first > third) && (scnd < third))
 	{
-		printf("ra\n");
         ra(a);
 	}
     else if ((first > scnd) && (scnd > third))
     {
-		printf("sa\nrra\n");
         sa(a);
         rra(a);
     }

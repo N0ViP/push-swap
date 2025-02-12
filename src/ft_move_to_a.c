@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 03:02:53 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/12 07:05:25 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/12 08:48:09 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ static int	ft_list_size(t_list *list)
 	return (i);
 }
 
-static int	ft_move_b_to_top(t_list *list_b, int val)
+static int	ft_move_b_to_top(t_list *list_b, t_stock *stock, int val)
 {
-	int	n;
+	int	m;
 
-	n = 0;
-	while (list_b && list_b->val != val)
+	m = 0;
+	while (list_b->val != val)
 	{
 		list_b = list_b->next;
-		n++;
+		m++;
 	}
-	return (n);
+	return (m);
 }
 
-static int	ft_move_a_to_top(t_list *list_a, int *target, int val)
+static int	ft_move_a_to_top(t_list *list_a, t_stock *stock, int val)
 {
 	int		n;
 	int		i;
@@ -51,11 +51,11 @@ static int	ft_move_a_to_top(t_list *list_a, int *target, int val)
 	tmp = list_a;
 	while (tmp)
 	{
-		if (val < n && n < tmp->val)
+		if (val < tmp->val && tmp->val <= n)
 			n = tmp->val;
 		tmp = tmp->next;
 	}
-	*target = n;
+	stock->tmp_target = n;
 	while (list_a && list_a->val != n)
 	{
 		list_a = list_a->next;
@@ -69,25 +69,27 @@ static int	ft_get_moves(t_list *list_a, t_list *list_b, t_stock *stock, int val)
 	int	n;
 	int	m;
 
-	n = ft_move_a_to_top(list_a, &(stock->tmp_target), val);
-	m = ft_move_b_to_top(list_b, val);
+	n = ft_move_a_to_top(list_a, stock, val);
+	m = ft_move_b_to_top(list_b, stock, val);
 	if (stock->asize / 2 < n)
+	{
+		stock->tmp_amove = 1;
 		n = stock->asize - n;
+	}
+	else
+		stock->tmp_amove = 0;
 	if (stock->bsize / 2 < m)
-		m = stock->asize - m;
-	return (m + n);
-}
-
-static void	ft_move_ab_to_top(t_list **list_a, t_list **list_b, t_stock *stock)
-{
-	int	n;
-	int	m;
-
-	n = ft_move_a_to_top(*list_a, &(stock->target), stock->num);
-	m = ft_move_b_to_top(*list_a, stock->num);
-	stock->amove = stock->bsize / 2 < n;
-	stock->bmove = stock->bsize / 2 < m;
-	ft_move(list_a, list_b, stock);
+	{
+		stock->tmp_bmove = 1;
+		m = stock->bsize - m;
+	}
+	else
+		stock->tmp_bmove = 0;
+	if (stock->tmp_bmove != stock->tmp_amove)
+		return (m + n);
+	if (m > n)
+		return (m);
+	return (n);
 }
 
 static void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
@@ -97,38 +99,20 @@ static void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
 		if (stock->amove == 1)
 		{
 			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
-			{
-				printf("rrr\n");
 				rrr(list_a, list_b);
-			}
 			while ((*list_a)->val != stock->target)
-			{
-				printf("rra\n");
 				rra(list_a);
-			}
 			while ((*list_b)->val != stock->num)
-			{
-				printf("rrb\n");
 				rrb(list_b);
-			}
 		}
 		else
 		{
 			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
-			{
-				printf("rr\n");
 				rr(list_a, list_b);
-			}
 			while ((*list_a)->val != stock->target)
-			{
-				printf("ra\n");
 				ra(list_a);
-			}
 			while ((*list_b)->val != stock->num)
-			{
-				printf("rb\n");
 				rb(list_b);
-			}
 		}
 	}
 	else
@@ -136,28 +120,16 @@ static void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
 		if (stock->amove == 1)
 		{
 			while ((*list_a)->val != stock->target)
-			{   
-				printf("rra\n");
 				rra(list_a);
-			}
 			while ((*list_b)->val != stock->num)
-			{   
-				printf("rb\n");
 				rb(list_b);
-			}
 		}
 		else
 		{
 			while ((*list_a)->val != stock->target)
-			{
-				printf("ra\n");
 				ra(list_a);
-			}
 			while ((*list_b)->val != stock->num)
-			{
-				printf("rrb\n");
 				rrb(list_b);
-			}
 		}
 	}
 }
@@ -178,10 +150,12 @@ static void	ft_fix_list(t_list **list_a, t_list **list_b, t_stock *stock)
 			best = move;
 			stock->target = stock->tmp_target;
 			stock->num = tmp->val;
+			stock->amove = stock->tmp_amove;
+			stock->bmove = stock->tmp_bmove;
 		}
 		tmp = tmp->next;
 	}
-	ft_move_ab_to_top(list_a, list_b, stock);
+	ft_move(list_a, list_b, stock);
 }
 
 void	ft_move_to_a(t_list **list_a, t_list **list_b)
@@ -193,9 +167,8 @@ void	ft_move_to_a(t_list **list_a, t_list **list_b)
 	while (*list_b)
 	{
 		ft_fix_list(list_a, list_b, &stock);
-		printf("pa\n");
 		pa(list_a, list_b);
 		stock.bsize--;
-		stock.bsize++;
+		stock.asize++;
 	}
 }

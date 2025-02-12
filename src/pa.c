@@ -16,6 +16,7 @@ void	pa(t_list **lista, t_list **listb)
 {
 	t_list	*tmp;
 
+	write(1, "pa\n", 3);
 	if (!lista || !listb || !*listb)
 		return ;
 	tmp = *lista;

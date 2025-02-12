@@ -17,6 +17,7 @@ void	ra(t_list **list_a)
 	t_list	*tmp;
 	t_list	*ptr;
 
+	write(1, "ra\n", 3);
 	if (!list_a || !*list_a || !(*list_a)->next)
 		return ;
 	tmp = *list_a;

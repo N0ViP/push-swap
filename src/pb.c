@@ -16,6 +16,7 @@ void	pb(t_list **list_b, t_list **list_a)
 {
 	t_list *tmp;
 
+	write(1, "pb\n", 3);
 	if (!list_a || !*list_a)
 		return ;
 	tmp = *list_b;
