@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/11 15:33:03 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/12 07:03:34 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	main(int ac, char *av[])
 		printf("list_b[%d] = %d\n", t->idx, t->val);
 		t = t->next;
 	}*/
-	ft_move_to_a(&list_a, &list_b, asize);
+	ft_move_to_a(&list_a, &list_b);
 	ft_move_to_top(&list_a, asize);
 	/*printf("\n\n\n");
 	while (list_a)
