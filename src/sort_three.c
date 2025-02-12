@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void    sort_3(t_list **a)
+void    ft_sort_three(t_list **a)
 {
     int    first;
     int    scnd;
@@ -22,13 +22,9 @@ void    sort_3(t_list **a)
     scnd = (*a)->next->val;
     third = (*a)->next->next->val;
     if ((first > scnd) && (first < third))
-	{
         sa(a);
-	}
     else if ((first < scnd) && (third < first))
-	{
         rra(a);
-	}
     else if ((first < third) && (scnd > third))
     {
         rra(a);

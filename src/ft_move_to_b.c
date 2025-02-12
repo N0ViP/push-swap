@@ -12,90 +12,35 @@
 
 #include "push_swap.h"
 
-int	check_if_valid(t_list *list_a, int val, int asize)
+int	ft_check_val(t_list *list_a, int asize)
 {
-	int	n;
+	int		n;
+	int		target;
+	t_list	*tmp;
 
 	n = 0;
-	while (list_a)
-	{
-		if (val < list_a->val)
-			n++;
-		if ((asize / 3) < n)
-			return (1);
-		list_a = list_a->next;
-	}
-	return (0);
-}
-
-int	ft_get_moves(int val, t_list *list_a, int asize)
-{
-	int	i;
-
-	i = 0;
-	while (list_a && list_a->val != val)
-	{
-		i++;
-		list_a = list_a->next;
-	}
-	if (i <= asize / 2)
-		return (i);
-	return (asize - i);
-}
-
-void	ft_rotate_a(t_list **list_a, int val, int asize)
-{
-	t_list		*tmp;
-	int			i;
-	operation	op;
-
-	i = 0;
-	tmp = *list_a;
-	while (tmp && tmp->val != val)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	if (i <= asize / 2)
-		op = ra;
-	else
-		op = rra;
-	while (*list_a && (*list_a)->val != val)
-	{
-		op(list_a);
-	}
-}
-
-void	ft_fix_list_a(t_list **list_a, int asize)
-{
-	t_list	*tmp;
-	int		best;
-	int		moves;
-	int		val;
-
-	best = INT_MAX;
-	tmp = *list_a;
+	tmp = list_a;
+	target = tmp->val;
+	tmp = tmp->next;
 	while (tmp)
 	{
-		moves = ft_get_moves(tmp->val, *list_a, asize);
-		if (check_if_valid(*list_a, tmp->val, asize) && moves <= best)
-		{
-			val = tmp->val;
-			best = moves;
-		}
+		if (target < tmp->val)
+			n++;
 		tmp = tmp->next;
 	}
-	ft_rotate_a(list_a, val, asize);
+	return (n);
 }
 
 void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize)
 {
 	while (asize > 3)
 	{
-		if (!check_if_valid(*list_a, (*list_a)->val, asize))
-			ft_fix_list_a(list_a, asize);
+		while (ft_check_val(*list_a, asize) < (asize / 2))
+		{
+			ra(list_a);
+		}
 		pb(list_b, list_a);
 		asize--;
 	}
-	sort_3(list_a);
+	ft_sort_three(list_a);
 }

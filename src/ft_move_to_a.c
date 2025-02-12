@@ -12,19 +12,33 @@
 
 #include "push_swap.h"
 
-static void    ft_move(t_list **list_a, t_list **list_b, t_stock *stock);
-
-static int	ft_list_size(t_list *list)
+static void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
 {
-	int	i;
+	operation	a_op;
+	operation	b_op;
 
-	i = 0;
-	while (list)
+	if (stock->amove)
+		a_op = rra;
+	else
+		a_op = ra;
+	if (stock->bmove)
+		b_op = rrb;
+	else
+		b_op = rb;
+	if (stock->amove == stock->bmove)
 	{
-		i++;
-		list = list->next;
+		if (stock->amove == 1)
+			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
+				rrr(list_a, list_b);
+		else
+			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
+				rr(list_a, list_b);
+
 	}
-	return (i);
+	while ((*list_a)->val != stock->target)
+		a_op(list_a);
+	while ((*list_b)->val != stock->num)
+		b_op(list_b);
 }
 
 static int	ft_move_b_to_top(t_list *list_b, t_stock *stock, int val)
@@ -51,7 +65,7 @@ static int	ft_move_a_to_top(t_list *list_a, t_stock *stock, int val)
 	tmp = list_a;
 	while (tmp)
 	{
-		if (val < tmp->val && tmp->val <= n)
+		if (val < tmp->val && tmp->val < n)
 			n = tmp->val;
 		tmp = tmp->next;
 	}
@@ -92,47 +106,6 @@ static int	ft_get_moves(t_list *list_a, t_list *list_b, t_stock *stock, int val)
 	return (n);
 }
 
-static void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
-{
-	if (stock->amove == stock->bmove)
-	{
-		if (stock->amove == 1)
-		{
-			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
-				rrr(list_a, list_b);
-			while ((*list_a)->val != stock->target)
-				rra(list_a);
-			while ((*list_b)->val != stock->num)
-				rrb(list_b);
-		}
-		else
-		{
-			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
-				rr(list_a, list_b);
-			while ((*list_a)->val != stock->target)
-				ra(list_a);
-			while ((*list_b)->val != stock->num)
-				rb(list_b);
-		}
-	}
-	else
-	{
-		if (stock->amove == 1)
-		{
-			while ((*list_a)->val != stock->target)
-				rra(list_a);
-			while ((*list_b)->val != stock->num)
-				rb(list_b);
-		}
-		else
-		{
-			while ((*list_a)->val != stock->target)
-				ra(list_a);
-			while ((*list_b)->val != stock->num)
-				rrb(list_b);
-		}
-	}
-}
 
 static void	ft_fix_list(t_list **list_a, t_list **list_b, t_stock *stock)
 {
@@ -145,7 +118,7 @@ static void	ft_fix_list(t_list **list_a, t_list **list_b, t_stock *stock)
 	while (tmp)
 	{
 		move = ft_get_moves(*list_a, *list_b, stock, tmp->val);
-		if (move <= best)
+		if (move < best)
 		{
 			best = move;
 			stock->target = stock->tmp_target;
@@ -162,8 +135,8 @@ void	ft_move_to_a(t_list **list_a, t_list **list_b)
 {
 	t_stock	stock;
 
-	stock.asize = ft_list_size(*list_a);
-	stock.bsize = ft_list_size(*list_b);
+	stock.asize = ft_list_len(*list_a);
+	stock.bsize = ft_list_len(*list_b);
 	while (*list_b)
 	{
 		ft_fix_list(list_a, list_b, &stock);

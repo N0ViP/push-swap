@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_ascii_to_int(char **av)
+int	ft_atoi(char **av)
 {
 	long long	res;
 	int			sign;
@@ -61,7 +61,7 @@ int	ft_one_arg(t_list *a, char *av)
 			av++;
 		if (!*av)
 			return (asize);
-		tmp = ft_ascii_to_int(&av);
+		tmp = ft_atoi(&av);
 		if (!av || ft_check_exist(a, tmp, asize))
 			return (-1);
 		a[asize].val = tmp;
@@ -121,9 +121,9 @@ int	main(int ac, char *av[])
 		return (write(2, "Error\n", 6));
 	else if (asize == 0 || asize == 1)
 		return (0);
-//	printf("\n\n\n");
+	//printf("\n\n\n");
 	ft_move_to_b(&list_a, &list_b, asize);
-/*	t = list_a;
+	/*t = list_a;
 	while (t)
 	{
 
