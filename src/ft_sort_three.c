@@ -12,31 +12,31 @@
 
 #include "push_swap.h"
 
-void    ft_sort_three(t_list **a)
+void    ft_sort_three(t_list **list_a)
 {
     int    first;
     int    scnd;
     int    third;
 
-    first = (*a)->val;
-    scnd = (*a)->next->val;
-    third = (*a)->next->next->val;
+    first = (*list_a)->val;
+    scnd = (*list_a)->next->val;
+    third = (*list_a)->next->next->val;
     if ((first > scnd) && (first < third))
-        sa(a);
+        sa(list_a);
     else if ((first < scnd) && (third < first))
-        rra(a);
+        rra(list_a);
     else if ((first < third) && (scnd > third))
     {
-        rra(a);
-        sa(a);
+        rra(list_a);
+        sa(list_a);
     }
     else if ((first > third) && (scnd < third))
 	{
-        ra(a);
+        ra(list_a);
 	}
     else if ((first > scnd) && (scnd > third))
     {
-        sa(a);
-        rra(a);
+        sa(list_a);
+        rra(list_a);
     }
 }

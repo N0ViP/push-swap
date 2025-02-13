@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/12 17:29:34 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/13 05:39:07 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ void	rr(t_list **lista, t_list **listb);
 void    sa(t_list **lista);
 
 /*utils*/
-void    ft_sort_three(t_list **a);
-int		ft_isdigit(int c);
 int		ft_isspace(int c);
+int		ft_isdigit(int c);
+int		ft_atoi(char **av);
+void    ft_sort_three(t_list **a);
+int		ft_list_len(t_list *list);
 void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize);
-void    ft_move_to_a(t_list **list_a, t_list **list_b);
 void    ft_move_to_top(t_list **list_a, int asize);
-int	ft_list_len(t_list *list);
+void    ft_move_to_a(t_list **list_a, t_list **list_b);
+void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock);
+void	ft_move_to_b(t_list **list_a, t_list **list_b, int asize);
 
 #endif
