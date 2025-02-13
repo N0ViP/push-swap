@@ -14,9 +14,9 @@
 
 static int	ft_get_min(t_list *list_a)
 {
-	int i;
-	int min;
-	int id;
+	int	i;
+	int	min;
+	int	id;
 
 	i = 0;
 	id = 0;
@@ -26,7 +26,7 @@ static int	ft_get_min(t_list *list_a)
 	while (list_a)
 	{
 		if (list_a->val < min)
-		{   
+		{
 			id = i;
 			min = list_a->val;
 		}
@@ -38,7 +38,7 @@ static int	ft_get_min(t_list *list_a)
 
 void	ft_move_to_top(t_list **list_a, int asize)
 {
-	operation	op;
+	t_operation	op;
 	int			id;
 
 	id = ft_get_min(*list_a);

@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
+void	ft_move(t_list **a, t_list **b, t_stock *stock)
 {
-	operation	a_op;
-	operation	b_op;
+	t_operation	a_op;
+	t_operation	b_op;
 
 	if (stock->amove)
 		a_op = rra;
@@ -28,15 +28,14 @@ void	ft_move(t_list **list_a, t_list **list_b, t_stock *stock)
 	if (stock->amove == stock->bmove)
 	{
 		if (stock->amove == 1)
-			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
-				rrr(list_a, list_b);
+			while ((*a)->val != stock->target && (*b)->val != stock->num)
+				rrr(a, b);
 		else
-			while ((*list_a)->val != stock->target && (*list_b)->val != stock->num)
-				rr(list_a, list_b);
-
+			while ((*a)->val != stock->target && (*b)->val != stock->num)
+				rr(a, b);
 	}
-	while ((*list_a)->val != stock->target)
-		a_op(list_a);
-	while ((*list_b)->val != stock->num)
-		b_op(list_b);
+	while ((*a)->val != stock->target)
+		a_op(a);
+	while ((*b)->val != stock->num)
+		b_op(b);
 }

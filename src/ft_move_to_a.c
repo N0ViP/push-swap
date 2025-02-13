@@ -49,7 +49,8 @@ static int	ft_move_a_to_top(t_list *list_a, t_stock *stock, int val)
 	return (i);
 }
 
-static int	ft_get_moves(t_list *list_a, t_list *list_b, t_stock *stock, int val)
+static int	ft_get_moves(t_list *list_a, t_list *list_b,
+	t_stock *stock, int val)
 {
 	int	n;
 	int	m;
@@ -76,7 +77,6 @@ static int	ft_get_moves(t_list *list_a, t_list *list_b, t_stock *stock, int val)
 		return (m);
 	return (n);
 }
-
 
 static void	ft_fix_list(t_list **list_a, t_list **list_b, t_stock *stock)
 {

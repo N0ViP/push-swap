@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_words.c                                   :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 17:59:17 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/01/18 01:17:43 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/01/14 18:40:40 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/02/05 18:56:51 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_count_words(char *s)
+void	pb(t_list **list_b, t_list **list_a)
 {
-	int	cnt;
+	t_list	*tmp;
 
-	cnt = 0;
-	while (*s)
-	{
-		while (*s && (*s == ' ' || *s >= 9 && *s <= 13))
-			s++;
-		if (*s)
-			cnt++;
-		while (*s && !(*s == ' ' || *s >= 9 && *s <= 13))
-			s++;
-	}
-	return (cnt);
+	write(1, "pb\n", 3);
+	if (!list_a || !*list_a)
+		return ;
+	tmp = *list_b;
+	*list_b = *list_a;
+	*list_a = (*list_a)->next;
+	(*list_b)->next = tmp;
 }
