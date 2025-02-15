@@ -32,46 +32,45 @@ void	ft_error(void)
 	{
 		i = read(0, &c, 1);
 	}
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
-void	get_operation(char *str)
+void	get_operation(char *str, t_list **list_a, t_list **list_b)
 {
 	if (!ft_strcmp(str, "ra\n"))
-		return (ra);
+		checker_r(list_a);
 	if (!ft_strcmp(str, "rb\n"))
-		return (rb);
+		checker_r(list_b);
 	if (!ft_strcmp(str, "rr\n"))
-		return (rr);
+		checker_rr(list_a, list_b);
 	if (!ft_strcmp(str, "rra\n"))
-		return (rra);
+		checker_rrab(list_a);
 	if (!ft_strcmp(str, "rrb\n"))
-		return (rrb);
+		checker_rrab(list_b);
 	if (!ft_strcmp(str, "rrr\n"))
-		return (rrr);
+		checker_rrr(list_a, list_b);
 	if (!ft_strcmp(str, "pa\n"))
-		return (pa);
+		checker_p(list_a, list_b);
 	if (!ft_strcmp(str, "pb\n"))
-		return (pb);
+		checker_p(list_b, list_a);
 	if (!ft_strcmp(str, "sa\n"))
-		return (sa);
+		checker_s(list_a);
 	if (!ft_strcmp(str, "sb\n"))
-		return (sb);
+		checker_s(list_b);
 	if (!ft_strcmp(str, "ss\n"))
-		return (ss);
+		checker_ss(list_a, list_b);
 	ft_error();
 }
 
-void	ft_check_list(t_list **list_a, t_list **list_b, int asize)
+void	ft_take_op(t_list **list_a, t_list **list_b, int asize)
 {
     char		*str;
-	operation	op;
 
 	str = get_next_line();
 	while (str)
 	{
-		op = get_operation(str);
-		`
+		get_operate(str);
 		str = get_next_line();
 	}
 }
