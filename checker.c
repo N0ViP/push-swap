@@ -115,14 +115,13 @@ static int	ft_check_list(t_list *list_a)
 	return (0);
 }
 #include <stdio.h>
-int	main(int ac, char *av[])
+int	main(int ac, char **av)
 {
-	t_list	tmp[STACK_MAX];
+	static t_list	tmp[STACK_MAX];
 	t_list	*list_a;
 	t_list	*list_b;
 	int		asize;
 
-	printf("hi\n\n");
 	if (ac != 2)
 		return (1);
 	asize = ft_fill_list_a(&list_a, tmp, av + 1);
