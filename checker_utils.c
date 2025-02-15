@@ -38,32 +38,33 @@ void	get_operation(char *str, t_list **list_a, t_list **list_b)
 {
 	if (!ft_strcmp(str, "ra\n"))
 		checker_r(list_a);
-	if (!ft_strcmp(str, "rb\n"))
+	else if (!ft_strcmp(str, "rb\n"))
 		checker_r(list_b);
-	if (!ft_strcmp(str, "rr\n"))
+	else if (!ft_strcmp(str, "rr\n"))
 		checker_rr(list_a, list_b);
-	if (!ft_strcmp(str, "rra\n"))
+	else if (!ft_strcmp(str, "rra\n"))
 		checker_rrab(list_a);
-	if (!ft_strcmp(str, "rrb\n"))
+	else if (!ft_strcmp(str, "rrb\n"))
 		checker_rrab(list_b);
-	if (!ft_strcmp(str, "rrr\n"))
+	else if (!ft_strcmp(str, "rrr\n"))
 		checker_rrr(list_a, list_b);
-	if (!ft_strcmp(str, "pa\n"))
-		checker_p(list_a, list_b);
-	if (!ft_strcmp(str, "pb\n"))
+	else if (!ft_strcmp(str, "pa\n"))
 		checker_p(list_b, list_a);
-	if (!ft_strcmp(str, "sa\n"))
+	else if (!ft_strcmp(str, "pb\n"))
+		checker_p(list_b, list_a);
+	else if (!ft_strcmp(str, "sa\n"))
 		checker_s(list_a);
-	if (!ft_strcmp(str, "sb\n"))
+	else if (!ft_strcmp(str, "sb\n"))
 		checker_s(list_b);
-	if (!ft_strcmp(str, "ss\n"))
+	else if (!ft_strcmp(str, "ss\n"))
 		checker_ss(list_a, list_b);
-	ft_error();
+	else
+		ft_error();
 }
 
 void	ft_take_op(t_list **list_a, t_list **list_b)
 {
-    char	str[5];
+	char	str[5];
 	int		i;
 
 	i = get_next_line(str);

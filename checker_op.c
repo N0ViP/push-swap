@@ -52,7 +52,7 @@ void	checker_p(t_list **list_a, t_list **list_b)
 {
 	t_list	*tmp;
 
-	if (!list_a || !list_b || !*list_b)
+	if (!list_a || !list_b || !(*list_b))
 		return ;
 	tmp = *list_a;
 	*list_a = *list_b;
