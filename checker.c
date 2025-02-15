@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/12 17:24:59 by yjaafar          ###   ########.fr       */
+/*   Created: 2025/02/15 04:01:21 by yjaafar           #+#    #+#             */
+/*   Updated: 2025/02/15 04:10:48 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,25 +97,15 @@ static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
 
 int	main(int ac, char *av[])
 {
-	int				asize;
-	static t_list	tmp[STACK_MAX];
-	t_list			*list_a;
-	t_list			*list_b;
+	t_list	tmp[STACK_MAX];
+	t_list	*list_a;
+	t_list	*list_b;
+	int		asize;
 
-	list_a = NULL;
-	list_b = NULL;
+	if (ac != 2)
+		return (1);
 	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6), 1);
-	else if (asize == 0 || asize == 1)
-		return (0);
-	if (asize == 2)
-	{
-		if (tmp[0].val > tmp[1].val)
-			write(1, "ra\n", 3);
-		return (0);
-	}
-	ft_move_to_b(&list_a, &list_b, asize);
-	ft_move_to_a(&list_a, &list_b);
-	ft_move_to_top(&list_a, asize);
+	ft_check_list(&list_a, &list_b, asize);
 }
