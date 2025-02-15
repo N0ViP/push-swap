@@ -28,7 +28,7 @@ void	ft_error(void)
 	char	c;
 
 	i = read(0, &c, 1);
-	while (i)
+	while (i && i != -1)
 	{
 		i = read(0, &c, 1);
 	}
@@ -71,6 +71,7 @@ void	ft_check_list(t_list **list_a, t_list **list_b, int asize)
 	while (str)
 	{
 		op = get_operation(str);
+		`
 		str = get_next_line();
 	}
 }
