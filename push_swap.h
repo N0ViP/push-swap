@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <limits.h>
+# include <stdlib.h>
 
 # define STACK_MAX 2097152
 
@@ -55,12 +56,24 @@ void	pb(t_list **listb, t_list **lista);
 void	rrr(t_list **lista, t_list **listb);
 void	pa(t_list **list_a, t_list **list_b);
 
-/*utils*/
+
+/* checker functions */
+void	checker_r(t_list **list);
+void	checker_rr(t_list **list_a, t_list **list_b);
+void	checker_rrab(t_list **list);
+void	checker_rrr(t_list **list_a, t_list **list_b);
+void	checker_p(t_list **list_a, t_list **list_b);
+void	checker_s(t_list **list);
+void	checker_ss(t_list **list_a, t_list **list_b);
+void	ft_take_op(t_list **list_a, t_list **list_b);
+int		ft_strcmp(const char *s1, const char *s2);
+
+/* utils */
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
 int		ft_atoi(char **av);
-void	ft_sort_three(t_list **a);
 int		ft_list_len(t_list *list);
+void	ft_sort_three(t_list **a);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_move_to_top(t_list **list_a, int asize);
 void	ft_move_to_a(t_list **list_a, t_list **list_b);
