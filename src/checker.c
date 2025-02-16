@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 04:01:21 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/15 04:10:48 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/16 06:22:57 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static int	ft_one_arg(t_list *a, char *av)
 		if (!av || ft_check_exist(a, tmp, asize))
 			return (-1);
 		a[asize].val = tmp;
-		a[asize].idx = asize;
 		asize++;
 	}
 	return (asize);
