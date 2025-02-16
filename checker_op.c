@@ -71,21 +71,3 @@ void	checker_p(t_list **list_a, t_list **list_b)
 	*list_b = (*list_b)->next;
 	(*list_a)->next = tmp;
 }
-
-void	checker_s(t_list **list)
-{
-	t_list	*tmp;
-
-	if (!list || !*list || !(*list)->next)
-		return ;
-	tmp = *list;
-	*list = (*list)->next;
-	tmp->next = (*list)->next;
-	(*list)->next = tmp;
-}
-
-void	checker_ss(t_list **list_a, t_list **list_b)
-{
-	checker_s(list_a);
-	checker_s(list_b);
-}
