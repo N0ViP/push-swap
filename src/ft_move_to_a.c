@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	ft_move_b_to_top(t_list *list_b, t_stock *stock, int val)
+static int	ft_move_b_to_top(t_list *list_b, int val)
 {
 	int	m;
 
@@ -56,7 +56,7 @@ static int	ft_get_moves(t_list *list_a, t_list *list_b,
 	int	m;
 
 	n = ft_move_a_to_top(list_a, stock, val);
-	m = ft_move_b_to_top(list_b, stock, val);
+	m = ft_move_b_to_top(list_b, val);
 	if (stock->asize / 2 < n)
 	{
 		stock->tmp_amove = 1;

@@ -67,7 +67,7 @@ static int	ft_multi_args(t_list *a, char **av)
 	return (asize);
 }
 
-static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av, int ac)
+static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av)
 {
 	int	asize;
 	int	i;
@@ -103,7 +103,9 @@ int	main(int ac, char *av[])
 
 	list_a = NULL;
 	list_b = NULL;
-	asize = ft_fill_list_a(&list_a, tmp, av + 1, ac - 1);
+	if (ac == 1)
+		return (1);
+	asize = ft_fill_list_a(&list_a, tmp, av + 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6), 1);
 	else if (asize == 0 || asize == 1)
