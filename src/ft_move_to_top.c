@@ -14,35 +14,28 @@
 
 static int	ft_get_min(t_list *list_a)
 {
-	int	i;
 	int	min;
-	int	id;
 
-	i = 0;
-	id = 0;
 	min = list_a->val;
-	list_a->idx = i++;
 	list_a = list_a->next;
 	while (list_a)
 	{
 		if (list_a->val < min)
 		{
-			id = i;
 			min = list_a->val;
 		}
-		list_a->idx = i++;
 		list_a = list_a->next;
 	}
-	return (id);
+	return (min);
 }
 
 void	ft_move_to_top(t_list **list_a, int asize)
 {
 	t_operation	op;
-	int			id;
+	int			min;
 
-	id = ft_get_min(*list_a);
-	if (id < asize / 2)
+	min = ft_get_min(*list_a);
+	if (min < asize / 2)
 	{
 		op = ra;
 	}
@@ -50,7 +43,7 @@ void	ft_move_to_top(t_list **list_a, int asize)
 	{
 		op = rra;
 	}
-	while (*list_a && (*list_a)->idx != id)
+	while (*list_a && (*list_a)->val != min)
 	{
 		op(list_a);
 	}

@@ -95,42 +95,18 @@ static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av)
 	return (0);
 }
 
-#include <stdio.h>
-static int	ft_check_list(t_list *list_a, int asize)
-{
-	t_list	*ptr;
-	int		i;
-
-	i = 0;
-	while (list_a)
-	{
-		ptr = list_a->next;
-		while (ptr)
-		{
-			if (ptr->val < list_a->val)
-			{
-				return (1);
-			}
-			ptr = ptr->next;
-		}
-		list_a = list_a->next;
-		i++;
-	}
-	if (i != asize)
-		return (1);
-	return (0);
-}
 int	main(int ac, char **av)
 {
 	static t_list	tmp[STACK_MAX];
-	t_list	*list_a;
-	t_list	*list_b;
-	int		asize;
+	t_list			*list_a;
+	t_list			*list_b;
+	int				asize;
 
 	if (ac != 2)
 		return (1);
+	list_a = NULL;
+	list_b = NULL;
 	asize = ft_fill_list_a(&list_a, tmp, av + 1);
-	printf("%d\n", asize);
 	if (asize == -1)
 		return (write(2, "Error\n", 6), 1);
 	ft_take_op(&list_a, &list_b);

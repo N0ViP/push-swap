@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:02:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/13 05:39:07 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/16 06:01:01 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,16 @@ void	pb(t_list **listb, t_list **lista);
 void	rrr(t_list **lista, t_list **listb);
 void	pa(t_list **list_a, t_list **list_b);
 
-
 /* checker functions */
 void	checker_r(t_list **list);
-void	checker_rr(t_list **list_a, t_list **list_b);
-void	checker_rrab(t_list **list);
-void	checker_rrr(t_list **list_a, t_list **list_b);
-void	checker_p(t_list **list_a, t_list **list_b);
 void	checker_s(t_list **list);
+void	checker_rrab(t_list **list);
+void	checker_p(t_list **list_a, t_list **list_b);
+void	checker_rr(t_list **list_a, t_list **list_b);
 void	checker_ss(t_list **list_a, t_list **list_b);
 void	ft_take_op(t_list **list_a, t_list **list_b);
+void	checker_rrr(t_list **list_a, t_list **list_b);
+int		ft_check_list(t_list *list_a, int asize);
 int		ft_strcmp(const char *s1, const char *s2);
 
 /* utils */
