@@ -45,7 +45,6 @@ static int	ft_one_arg(t_list *a, char *av)
 		if (!av || ft_check_exist(a, tmp, asize))
 			return (-1);
 		a[asize].val = tmp;
-		a[asize].idx = asize;
 		asize++;
 	}
 	return (asize);
