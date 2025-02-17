@@ -11,12 +11,17 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-static int	ft_get_min(t_list *list_a)
+static int	ft_get_min(t_list *list_a, int *idx)
 {
-	int	min;
+	int		min;
+	int		i;
+	t_list	*ptr;
 
 	min = list_a->val;
+	i = 0;
+	ptr = list_a;
 	list_a = list_a->next;
 	while (list_a)
 	{
@@ -26,16 +31,22 @@ static int	ft_get_min(t_list *list_a)
 		}
 		list_a = list_a->next;
 	}
+	while (ptr && ptr->val != min)
+	{
+		i++;
+		ptr = ptr->next;
+	}
+	*idx = i;
 	return (min);
 }
-
 void	ft_move_to_top(t_list **list_a, int asize)
 {
 	t_operation	op;
+	int			i;
 	int			min;
 
-	min = ft_get_min(*list_a);
-	if (min < asize / 2)
+	min = ft_get_min(*list_a, &i);
+	if (i < asize / 2)
 	{
 		op = ra;
 	}
