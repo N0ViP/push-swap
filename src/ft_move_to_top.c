@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 10:03:08 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/09 13:16:38 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/17 01:42:00 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	ft_get_min(t_list *list_a, int *idx)
 	*idx = i;
 	return (min);
 }
+
 void	ft_move_to_top(t_list **list_a, int asize)
 {
 	t_operation	op;
