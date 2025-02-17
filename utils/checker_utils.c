@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 05:59:30 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/16 05:59:32 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/17 05:06:39 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	ft_error(char *str)
 		if (str[i] == '\n')
 		{
 			write(2, "Error\n", 6);
-			exit(1);
+			exit(255);
 		}
 		i++;
 	}
 	while (read(0, &c, 1) > 0 && c != '\n')
 		;
 	write(2, "Error\n", 6);
-	exit(1);
+	exit(255);
 }
 
 void	get_operation(char *str, t_list **list_a, t_list **list_b)

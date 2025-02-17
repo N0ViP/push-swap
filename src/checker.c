@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 04:01:21 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/16 06:22:57 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/17 05:05:12 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,18 @@ int	main(int ac, char **av)
 	int				asize;
 
 	if (ac != 2)
-		return (1);
+		return (0);
 	list_a = NULL;
 	list_b = NULL;
 	asize = ft_fill_list_a(&list_a, tmp, av + 1);
 	if (asize == -1)
-		return (write(2, "Error\n", 6), 1);
+	{
+		return (write(2, "Error\n", 6), 255);
+	}
 	ft_take_op(&list_a, &list_b);
 	if (ft_check_list(list_a, asize))
-		return (write(1, "KO\n", 3), 1);
+	{
+		return (write(1, "KO\n", 3), 0);
+	}
 	return (write(1, "OK\n", 3), 0);
 }
