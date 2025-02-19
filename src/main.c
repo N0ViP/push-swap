@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/12 17:24:59 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/19 05:50:00 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av)
 	}
 	if (asize == -1)
 		return (-1);
-	return (0);
+	return (asize == 1);
 }
 
 int	main(int ac, char *av[])
