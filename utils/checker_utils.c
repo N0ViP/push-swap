@@ -87,6 +87,8 @@ int	ft_check_list(t_list *list_a, int asize)
 	int		i;
 
 	i = 1;
+	if (!list_a)
+		return (1);
 	ptr = list_a->next;
 	while (list_a && ptr)
 	{
