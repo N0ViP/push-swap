@@ -86,18 +86,15 @@ int	ft_check_list(t_list *list_a, int asize)
 	t_list	*ptr;
 	int		i;
 
-	i = 0;
-	while (list_a)
+	i = 1;
+	ptr = list_a->next;
+	while (list_a && ptr)
 	{
-		ptr = list_a->next;
-		while (ptr)
+		if (ptr->val < list_a->val)
 		{
-			if (ptr->val < list_a->val)
-			{
-				return (1);
-			}
-			ptr = ptr->next;
+			return (1);
 		}
+		ptr = ptr->next;
 		list_a = list_a->next;
 		i++;
 	}

@@ -71,27 +71,12 @@ static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av)
 {
 	int	asize;
 	int	i;
-	int	j;
 
 	asize = ft_multi_args(a, av);
 	i = asize - 1;
 	while (i >= 0)
 		ft_lstadd_front(list_a, &a[i--]);
-	i = 0;
-	while (i < asize - 1)
-	{
-		j = i + 1;
-		while (j < asize)
-		{
-			if (a[i].val > a[j].val)
-				return (asize);
-			j++;
-		}
-		i++;
-	}
-	if (asize == -1)
-		return (-1);
-	return (asize == 1);
+	return (asize);
 }
 
 int	main(int ac, char **av)
