@@ -6,7 +6,7 @@
 /*   By: yjaafar <yjaafar@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:31:31 by yjaafar           #+#    #+#             */
-/*   Updated: 2025/02/19 05:50:00 by yjaafar          ###   ########.fr       */
+/*   Updated: 2025/02/22 05:33:19 by yjaafar          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,17 @@ static int	ft_fill_list_a(t_list **list_a, t_list *a, char **av)
 	while (i >= 0)
 		ft_lstadd_front(list_a, &a[i--]);
 	i = 0;
-	while (i < asize - 1)
+	j = 1;
+	while (j <= asize - 1)
 	{
-		j = i + 1;
-		while (j < asize)
-		{
-			if (a[i].val > a[j].val)
-				return (asize);
-			j++;
-		}
+		if (a[i].val > a[j].val)
+			return (asize);
+		j++;
 		i++;
 	}
 	if (asize == -1)
 		return (-1);
-	return (asize == 1);
+	return (0);
 }
 
 int	main(int ac, char *av[])
@@ -108,7 +105,7 @@ int	main(int ac, char *av[])
 	asize = ft_fill_list_a(&list_a, tmp, av + 1);
 	if (asize == -1)
 		return (write(2, "Error\n", 6), 1);
-	else if (asize == 0 || asize == 1)
+	else if (asize == 0)
 		return (0);
 	if (asize == 2)
 	{
