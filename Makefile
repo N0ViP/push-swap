@@ -43,3 +43,4 @@ fclean : clean
 re : fclean all
 
 .PHONY : all clean fclean re bonus
+.SECONDARY : $(SRC_OBJS) $(OP_OBJS) $(UTILS_OBJS) $(BSRC_OBJS) $(BOP_OBJS) $(BUTILS_OBJS)
